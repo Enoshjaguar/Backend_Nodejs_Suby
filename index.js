@@ -6,11 +6,13 @@ const bodyParser = require('body-parser');
 const firmRoutes = require('./routes/firmRoutes')
 const productRoutes = require('./routes/productRoutes')
 const path = require('path')
+const cors = require('cors')
 const app = express();
+
 const PORT = process.env.PORT || 4000
 
 dotEnv.config()
-
+app.use(cors())
 mongoose.connect(process.env.MONGO_URI)
     .then(()=>console.log("connected to database successfully"))
     .catch((err)=>console.log("some error occured ",err))
@@ -25,5 +27,5 @@ app.listen(PORT,()=>{
 })
 
 app.use('/',(req,res)=>{
-    res.send(`<h1>Welocome to SUBY</h1> and the link is ${dblink}`)
+    res.send(`<h1>Welocome to SUBY</h1> and the link i`)
 })
